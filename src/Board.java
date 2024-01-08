@@ -5,6 +5,7 @@ public class Board {
 
     public Board(String boardType) {
         ArrayList<ArrayList<ChessPiece>> pieces = new ArrayList<>();
+        board = new ArrayList<>();
         if(boardType.equals("Pawn")) {
             for(int i = 0; i < 4; i++) {
                 pieces.add(new ArrayList<>());
@@ -18,6 +19,11 @@ public class Board {
             createBoard(pieces);
         }
     }
+
+    /**
+     * Populates the board with the provided pieces placed on the top and bottom two rows.
+     * @param pieces two sets of pieces one for black player and one for white player
+     */
     private void createBoard(ArrayList<ArrayList<ChessPiece>> pieces) {
         if(pieces.size() == 4) {
             board.add(pieces.get(0));
@@ -39,8 +45,10 @@ public class Board {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        int boardNumber = 8;
         for (ArrayList<ChessPiece> chessPieces : board) {
             if (chessPieces != null) {
+                builder.append(boardNumber--).append(" ");
                 if (!chessPieces.isEmpty()) {
                     for (int length = 0; length < chessPieces.size() - 1; length++) {
                         builder.append("[");
@@ -59,6 +67,7 @@ public class Board {
                 builder.append("[ ]\n");
             }
         }
+        builder.append("   a  b  c  d  e  f  g  h\n");
         return builder.toString();
     }
 }
