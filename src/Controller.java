@@ -1,5 +1,3 @@
-import javax.swing.JComboBox;
-
 public class Controller {
     View view;
     Board board;
